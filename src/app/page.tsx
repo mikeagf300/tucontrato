@@ -31,8 +31,8 @@ export default function HomePage() {
             y sin complicaciones.
           </p>
           <Link href="/documentos">
-            <Button className="text-lg px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-full">
-              Comenzar ahora
+            <Button className="bg-black text-white hover:bg-gray-800">
+              Ver documentos
             </Button>
           </Link>
         </div>
