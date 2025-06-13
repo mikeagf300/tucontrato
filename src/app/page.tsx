@@ -1,103 +1,165 @@
+// app/page.tsx
+"use client";
+
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 import Image from "next/image";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { motion } from "framer-motion";
 
-export default function Home() {
+const MotionH2 = motion("h2");
+
+export default function HomePage() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
+    <main className="min-h-screen text-white">
+      {/* Hero con imagen de fondo */}
+      <section className="relative h-[500px] flex items-center justify-center text-center px-6">
         <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
+          src="/contratoFondo.png"
+          alt="Firma de contrato"
+          fill
           priority
+          className="object-cover opacity-60"
+          sizes="100vw"
         />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+        <div className="absolute inset-0 bg-black/40" />
+        <div className="relative z-10 max-w-2xl">
+          <h1 className="text-6xl font-bold mb-4">TuContrato</h1>
+          <p className="text-lg mb-6">
+            Genera documentos legales personalizados en minutos. Gratis, rápido
+            y sin complicaciones.
+          </p>
+          <Link href="/documentos">
+            <Button className="text-lg px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-full">
+              Comenzar ahora
+            </Button>
+          </Link>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+      </section>
+
+      {/* Beneficios */}
+      <section className=" bg-gray-300 text-gray-900 py-20 px-6">
+        <h2 className="text-4xl font-bold text-center mb-12">
+          ¿Por qué usar <span className="text-black">TuContrato</span>?
+        </h2>
+
+        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <Card className="bg-black text-white border border-gray-800 shadow-lg hover:shadow-xl transition-shadow">
+            <CardHeader>
+              <CardTitle className="text-xl">Fácil</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-gray-300">
+                Completa un formulario paso a paso y obtén tu documento listo.
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card className="bg-black text-white border border-gray-800 shadow-lg hover:shadow-xl transition-shadow">
+            <CardHeader>
+              <CardTitle className="text-xl">Gratis</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-gray-300">
+                Accede a contratos básicos sin pagar.
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card className="bg-black text-white border border-gray-800 shadow-lg hover:shadow-xl transition-shadow">
+            <CardHeader>
+              <CardTitle className="text-xl">Seguro</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-gray-300">
+                Tus datos no se almacenan ni se comparten.
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      <section className="py-20 bg-gray-300 text-gray-900 px-6">
+        <MotionH2
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-3xl font-bold text-center mb-12"
         >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+          Documentos disponibles
+        </MotionH2>
+
+        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto text-center">
+          {[
+            {
+              title: "Contrato de Arrendamiento",
+              desc: "Renta segura entre particulares.",
+            },
+            {
+              title: "Carta de Responsiva",
+              desc: "Protección ante terceros en cesión de bienes.",
+            },
+            {
+              title: "Convenio de Pago",
+              desc: "Formaliza deudas o acuerdos de pago.",
+            },
+          ].map((item, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: i * 0.2 }}
+              viewport={{ once: true }}
+              className="p-6 bg-black text-white rounded-xl shadow-md border border-gray-800"
+            >
+              <h3 className="text-lg font-bold mb-2">{item.title}</h3>
+              <p className="text-sm text-gray-300">{item.desc}</p>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+      <section className="py-16 bg-white px-6 text-gray-900">
+        <h2 className="text-2xl font-semibold text-center mb-10">
+          Lo que dicen quienes lo usaron
+        </h2>
+        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <blockquote className="border-l-4 border-blue-600 pl-4 italic text-sm">
+            &quot;Pude hacer mi contrato de renta en 10 minutos, sin pagarle a
+            nadie. Todo legal y claro.&quot;
+            <br />
+            <span className="block text-right mt-2 font-semibold text-blue-600">
+              — Andrés M.
+            </span>
+          </blockquote>
+          <blockquote className="border-l-4 border-blue-600 pl-4 italic text-sm">
+            &quot;Mi cliente firmó la carta responsiva digital que generé aquí,
+            y me ahorré horas de redacción.&quot;
+            <br />
+            <span className="block text-right mt-2 font-semibold text-blue-600">
+              — Laura G.
+            </span>
+          </blockquote>
+        </div>
+      </section>
+
+      <section className="bg-blue-600 py-16 text-white text-center px-6">
+        <h2 className="text-2xl font-bold mb-4">Empieza ahora</h2>
+        <p className="mb-6">
+          Generar un documento es gratuito y toma menos de 5 minutos.
+        </p>
+        <Link href="/documentos">
+          <Button className="text-lg px-6 py-3 bg-white text-blue-600 hover:bg-gray-100 rounded-full">
+            Crear mi primer contrato
+          </Button>
+        </Link>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-6 text-center text-sm text-gray-500 bg-white">
+        © {new Date().getFullYear()} TuContrato — Desarrollado por Miguel Gómez
       </footer>
-    </div>
+    </main>
   );
 }
